@@ -1,28 +1,38 @@
 <?php
 
 class Stream {
+    
+    private static $HelpersUtils = 'Helpers_Utils';
 
     public function __construct()
-    { }
-
-    public function Transfer()
     {
-        /* Test whether the file name contains illegal characters
-        such as "../" using the regular expression */
-        if(preg_match('/^[^.][-a-z0-9_.]+[a-z]$/i', $file)){
-            $filepath = "images/" . $file;
+        Injector::loadClass(self::$HelpersUtils);
+    }
+
+    public static function Transfer()
+    {
+        Injector::loadClass(self::$HelpersUtils);
+
+        if(Utils::urlIllegalCheckr(Path::$filePath)){
+            $filepath = Path::$filePath;
+            $filename = basename($filepath);
+            $filesize = filesize($filepath);
 
             // Process download
             if(file_exists($filepath)) {
                 header('Content-Description: File Transfer');
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename="'.basename($filepath).'"');
+                header('Content-Type: ' . Utils::mimeType($filename));
+                header('Content-Disposition: attachment; filename="'. $filename .'"');
+                header('Content-Transfer-Encoding: binary');
                 header('Expires: 0');
                 header('Cache-Control: must-revalidate');
                 header('Pragma: public');
-                header('Content-Length: ' . filesize($filepath));
-                flush(); // Flush system output buffer
+                header('Content-Length: ' . $filesize);
+                
+                ob_clean();
+                flush();
                 readfile($filepath);
+                // header("Location: /");
                 die();
             } else {
                 http_response_code(404);
