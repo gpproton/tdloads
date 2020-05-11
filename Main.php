@@ -9,6 +9,7 @@ class Main {
     private $HandlerConfig = 'Handlers_Config';
     private $HandlerStream = 'Handlers_Stream';
     private $HelpersPath = 'helpers_path';
+    private $HandlerRoutes = 'Handlers_Routes';
 
     public function __construct()
     {
@@ -16,6 +17,7 @@ class Main {
         Injector::loadClass($this->HandlerConfig);
         Injector::loadClass($this->HandlerStream);
         Injector::loadClass($this->HelpersPath);
+        Injector::loadClass($this->HandlerRoutes);
 
         // Auto loads required classes
         Config::Load();
@@ -29,10 +31,12 @@ class Main {
 
         // echo Config::$STORAGE_PATH;
         
-        // echo Path::$fileRealPath;
+        // echo var_dump(Path::$fileRealPath);
 
 
-        $tst = new Stream;
-        $tst->Transfer();
+        // $tst = new Stream;
+        // $tst->Transfer();
+
+        Routes::Initialize();
     }
 }
