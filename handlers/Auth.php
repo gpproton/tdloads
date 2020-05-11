@@ -4,7 +4,17 @@ class Auth {
     public function __construct()
     { }
 
-    public function Initialize()
+    private function EncodePush()
+    { }
+
+    // Auth JWT auth source
+    public function PassKey()
+    { }
+
+    public function Database()
+    { }
+
+    public function Auth0()
     { }
 
 }
