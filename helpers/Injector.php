@@ -28,6 +28,6 @@ class Injector {
             }
         }
 
-        
+        return $path;
     }
 }
