@@ -1,6 +1,6 @@
 <?php
 
-class Path {
+final class Path {
 
     public static $fileName;
     public static $fileExtension;

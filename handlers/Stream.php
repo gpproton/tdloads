@@ -1,6 +1,6 @@
 <?php
 
-class Stream {
+final class Stream {
     
     private static $HelpersUtils = 'Helpers_Utils';
 

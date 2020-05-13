@@ -1,6 +1,6 @@
 <?php
 
-class Query {
+final class Query {
 
     public function __construct()
     { }

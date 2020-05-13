@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-class Main {
+final class Main {
 
     public $Config;
 

@@ -1,6 +1,6 @@
 <?php
 
-class Injector {
+final class Injector {
     public function __construct()
     {
 

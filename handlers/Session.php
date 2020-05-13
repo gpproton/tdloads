@@ -1,6 +1,6 @@
 <?php
 
-class Session {
+final class Session {
 
     public function __construct()
     { }

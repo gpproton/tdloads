@@ -1,6 +1,6 @@
 <?php
 
-class Utils {
+final class Utils {
 
     public function __construct()
     { }

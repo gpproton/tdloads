@@ -1,6 +1,6 @@
 <?php
 
-class Config {
+final class Config {
 
     // Parameters
     public static $BASE_REAL_PATH;

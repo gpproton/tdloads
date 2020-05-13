@@ -1,6 +1,6 @@
 <?php
 
-class Routes {
+final class Routes {
 
     private static $HandlersQuery = 'Handlers_Query';
     private static $HandlersStream = 'Handlers_Stream';
@@ -8,6 +8,16 @@ class Routes {
 
     private static $RouteMode;
     private static $queryString;
+
+    // Fixed tags for query strings
+    const QUERY_MODE = 'mode';
+    const STATE_TAGS = array(
+        'start',
+        'transfer',
+        'auth',
+        'done',
+        'error'
+    );
 
     public function __construct()
     { }
@@ -21,30 +31,30 @@ class Routes {
 
         self::$queryString = Query::Filter();
 
-        if(count(self::$queryString) < 3 && self::$queryString['mode'] != null)
+        if(count(self::$queryString) < 3 && self::$queryString[self::QUERY_MODE] != null)
         {
-            self::$RouteMode = 'start';
+            self::$RouteMode = self::STATE_TAGS[0];
         }
         else
         {
-            self::$RouteMode = self::$queryString['mode'][0];
+            self::$RouteMode = self::$queryString[self::QUERY_MODE][0];
         }
 
         switch(self::$RouteMode)
         {
-            case 'start':
+            case self::STATE_TAGS[0]:
                 self::StartController();
             break;
-            case 'transfer':
+            case self::STATE_TAGS[1]:
                 self::TrasferController();
             break;
-            case 'auth':
+            case self::STATE_TAGS[2]:
                 self::AuthController();
             break;
-            case 'done':
+            case self::STATE_TAGS[3]:
                 self::DoneController();
             break;
-            case 'error':
+            case self::STATE_TAGS[4]:
                 self::ErrorController();
             break;
             default:
