@@ -2,7 +2,7 @@
 
 class BaseView {
 
-    public static function Header()
+    protected static function Header()
     {
         return <<<EOF
 
@@ -25,7 +25,7 @@ class BaseView {
 EOF;
     }
 
-    public static function Footer()
+    protected static function Footer()
     {
         return <<<EOF
 
@@ -35,25 +35,11 @@ EOF;
 EOF;
     }
 
-    public static function Content()
-    {
-        return <<<EOF
-
-        <h1>Test Auth</h1>
-        <!-- The form -->
-        <form class="example" action="">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-        
-EOF;
-    }
-
     public static function Render()
     {
         echo self::Header();
 
-        echo self::Content();
+        echo static::Content();
 
         echo self::Footer();
     }

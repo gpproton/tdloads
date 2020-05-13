@@ -2,6 +2,16 @@
 
 Injector::loadClass('Views_BaseView');
 
-class AuthView extends BaseView {
+final class AuthView extends BaseView {
+    
+    protected static function Content()
+    {
+?>
+
+<h1>Test <?php echo __CLASS__ ?></h1>
+
+<?php
+    return '';
+    }
 
 }
