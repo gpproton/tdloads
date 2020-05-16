@@ -4,6 +4,8 @@ final class Routes {
 
     private static $HandlersQuery = 'Handlers_Query';
     private static $HandlersStream = 'Handlers_Stream';
+    private static $HandlersAuth = 'Handlers_Auth';
+    private static $HandlersSession = 'Handlers_Session';
     private static $HelpersUtils = 'Helpers_Utils';
 
     private static $RouteMode;
@@ -27,6 +29,8 @@ final class Routes {
         // Initialize query class
         Injector::loadClass(self::$HandlersQuery);
         Injector::loadClass(self::$HandlersStream);
+        Injector::loadClass(self::$HandlersAuth);
+        Injector::loadClass(self::$HandlersSession);
         Injector::loadClass(self::$HelpersUtils);
 
         self::$queryString = Query::Filter();
@@ -38,6 +42,11 @@ final class Routes {
         else
         {
             self::$RouteMode = self::$queryString[self::QUERY_MODE][0];
+        }
+
+        if(!Auth::Verify())
+        {
+            self::RedirectQuery('?' . $_SERVER['QUERY_STRING']);
         }
 
         switch(self::$RouteMode)
@@ -61,7 +70,12 @@ final class Routes {
                 self::StartController();
             break;
         }
+    }
 
+    public static function RedirectQuery($queryString)
+    {
+        header("Status: 301 Moved Permanently");
+        header("Location: /" . $queryString);
     }
 
     private function StartController()
@@ -72,13 +86,23 @@ final class Routes {
 
     private function TrasferController()
     {
-        Stream::Transfer();
+        // Check if from done state
+        self::RedirectQuery('?' . Query::ModeSwitch('transfer'));
     }
 
     private function DoneController()
     {
         Utils::viewLoader(self::$RouteMode);
         DoneView::Render();
+
+        if(Session::Status())
+        {
+            Stream::Transfer();
+        }
+        else
+        {
+            self::RedirectQuery('?' . Query::ModeSwitch('done'));
+        }
     }
 
     private function ErrorController()
@@ -91,6 +115,19 @@ final class Routes {
     {
         Utils::viewLoader(self::$RouteMode);
         AuthView::Render();
+
+        if(Session::Status())
+        {
+            self::RedirectQuery('?' . Query::ModeSwitch('auth'));
+        }
+        else if(!Auth::Verify())
+        {
+            self::RedirectQuery('?' . $_SERVER['QUERY_STRING']);
+        }
+        else if(!isset(Session::$SESSION_VALUE))
+        {
+            // self::RedirectQuery('?' . Query::ModeSwitch('error'));
+        }
     }
 
 }
