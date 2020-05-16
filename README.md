@@ -1,8 +1,8 @@
 # TDloads
 
- A mini php file downloader
+ A mini php file download with optionated authorization.
 
-##Usage
+## Usage
 
 It's as simple as visting the link below, ensure the folder structure are arranged on the path variable (path) in the right order while file name (filename) and extention (ext) are correctly entered.
 
@@ -15,7 +15,7 @@ http://localhost/?mode=transfer&path=test1&path=test2&filename=customers&ext=xls
 `````
 
 
-###Some config options
+### Some config options
 
 
 `````
