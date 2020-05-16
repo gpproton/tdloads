@@ -16,12 +16,12 @@ final class AuthView extends BaseView {
             <span class="dl_header_text" style="font-size: 22px;">Requires a PassKey</span>
         </div>
 
-        <form action="#" class="dl_form dl_vertical_center dl_horizontal_center">
+        <form action="" method="POST" class="dl_form dl_vertical_center dl_horizontal_center">
             <div class="dl_base_form">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input dl_input" type="text" id="auth" required>
+                    <input class="mdl-textfield__input dl_input" type="password" id="auth" name="dl_passkey" required>
                     <label class="mdl-textfield__label" for="auth">Pass Key..</label>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl_button">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl_button" name="dl_submit">
                         <i class="material-icons">navigate_next</i>
                     </button>
                 </div>
