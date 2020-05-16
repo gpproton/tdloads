@@ -1,17 +1,12 @@
 <?php
 
 final class Stream {
-    
-    private static $HelpersUtils = 'Helpers_Utils';
 
     public function __construct()
-    {
-        Injector::loadClass(self::$HelpersUtils);
-    }
+    { }
 
     public static function Transfer()
     {
-        Injector::loadClass(self::$HelpersUtils);
 
         if(Utils::urlIllegalCheckr(Path::$filePath)){
             $filepath = Path::$filePath;
@@ -32,7 +27,6 @@ final class Stream {
                 ob_clean();
                 flush();
                 readfile($filepath);
-                // header("Location: /");
                 die();
             } else {
                 http_response_code(404);
@@ -41,6 +35,5 @@ final class Stream {
         } else {
             die("Invalid file name!");
         }
-        echo 'Placeholder...';
     }
 }

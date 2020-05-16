@@ -2,7 +2,6 @@
 
 final class Session {
 
-    const CONFIG_HANDLER = 'Handlers_Config';
     private static $SESSION_KEY = '';
     public static $SESSION_VALUE = '';
     private static $SESSION_TIMEOUT = 0;
@@ -14,8 +13,6 @@ final class Session {
 
     public static function Boot()
     {
-        Injector::loadClass(self::CONFIG_HANDLER);
-
         self::$SESSION_KEY = Config::$SESSION_KEY;
         self::$SESSION_TIMEOUT = Config::$AUTH_TIMEOUT;
     }
@@ -41,7 +38,7 @@ final class Session {
     {
         if(!isset($_COOKIE[self::$SESSION_KEY]))
         {
-            setcookie(self::$SESSION_KEY, self::$SESSION_VALUE, time() + (self::$SESSION_TIMEOUT * 30), "/");
+            setcookie(self::$SESSION_KEY, self::$SESSION_VALUE, time() + self::$SESSION_TIMEOUT * 1, "/");
         }
     }
     

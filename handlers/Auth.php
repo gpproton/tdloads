@@ -2,19 +2,11 @@
 
 final class Auth {
 
-    const CONFIG_HANDLER = 'Handlers_Config';
-    const SESSION_HANDLER = 'Handlers_Session';
-    const QUERY_HANDLER = 'Handlers_Query';
-
     public function __construct()
     { }
 
     public static function Verify()
     {
-        Injector::loadClass(self::CONFIG_HANDLER);
-        Injector::loadClass(self::SESSION_HANDLER);
-        Injector::loadClass(self::QUERY_HANDLER);
-
         Config::Load();
         Session::Boot();
 

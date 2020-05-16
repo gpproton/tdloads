@@ -4,17 +4,22 @@ require 'vendor/autoload.php';
 
 final class Main {
 
-    public $Config;
-
     private $HandlerConfig = 'Handlers_Config';
+    private $HandlersQuery = 'Handlers_Query';
     private $HandlerStream = 'Handlers_Stream';
-    private $HelpersPath = 'helpers_path';
+    private $HelpersPath = 'Helpers_Path';
     private $HandlerRoutes = 'Handlers_Routes';
+
+    private $HelpersUtils = 'Helpers_Utils';
+    private $HandlersSession = 'Handlers_Session';
+    private $HandlersAuth = 'Handlers_Auth';
 
     public function __construct()
     {
         // Class Injections..
+
         Injector::loadClass($this->HandlerConfig);
+        Injector::loadClass($this->HandlersQuery);
         Injector::loadClass($this->HandlerStream);
         Injector::loadClass($this->HelpersPath);
         Injector::loadClass($this->HandlerRoutes);
@@ -27,15 +32,10 @@ final class Main {
 
     public function Run()
     {
-        // Boot..
-
-        // echo Config::$STORAGE_PATH;
-        
-        // echo var_dump(Path::$fileRealPath);
-
-
-        // $tst = new Stream;
-        // $tst->Transfer();
+        // Boot up..
+        Injector::loadClass($this->HelpersUtils);
+        Injector::loadClass($this->HandlersSession);
+        Injector::loadClass($this->HandlersAuth);
 
         Routes::Initialize();
     }

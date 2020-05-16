@@ -2,12 +2,6 @@
 
 final class Routes {
 
-    private static $HandlersQuery = 'Handlers_Query';
-    private static $HandlersStream = 'Handlers_Stream';
-    private static $HandlersAuth = 'Handlers_Auth';
-    private static $HandlersSession = 'Handlers_Session';
-    private static $HelpersUtils = 'Helpers_Utils';
-
     private static $RouteMode;
     private static $queryString;
 
@@ -27,11 +21,6 @@ final class Routes {
     public static function Initialize()
     {
         // Initialize query class
-        Injector::loadClass(self::$HandlersQuery);
-        Injector::loadClass(self::$HandlersStream);
-        Injector::loadClass(self::$HandlersAuth);
-        Injector::loadClass(self::$HandlersSession);
-        Injector::loadClass(self::$HelpersUtils);
 
         self::$queryString = Query::Filter();
 
