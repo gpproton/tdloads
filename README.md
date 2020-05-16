@@ -1,4 +1,4 @@
-# TDloads
+# TDLoads
 
  A mini php file download with optionated authorization.
 
@@ -19,6 +19,7 @@ http://localhost/?mode=transfer&path=test1&path=test2&filename=customers&ext=xls
 
 
 `````
+
 STORAGE_PATH=storage
 CACHE_PATH=cache
 AUTH_TYPE=passkey
