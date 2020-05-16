@@ -6,6 +6,10 @@ final class Config {
     public static $BASE_REAL_PATH;
     public static $STORAGE_PATH;
     public static $CACHE_PATH;
+    public static $PASS_KEY;
+    public static $AUTH_TYPE;
+    public static $AUTH_TIMEOUT;
+    public static $SESSION_KEY;
 
     public static function Load()
     {
@@ -18,6 +22,10 @@ final class Config {
         //
         self::$STORAGE_PATH = getenv('STORAGE_PATH');
         self::$CACHE_PATH = getenv('CACHE_PATH');
+        self::$PASS_KEY = getenv('PASS_KEY');
+        self::$AUTH_TYPE = getenv('AUTH_TYPE');
+        self::$AUTH_TIMEOUT = getenv('AUTH_TIMEOUT');
+        self::$SESSION_KEY = getenv('SESSION_KEY');
 
     }
 }
