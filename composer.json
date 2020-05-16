@@ -1,0 +1,15 @@
+{
+    "name": "gpproton/tdloads",
+    "description": "A mini php file downloader",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Godwin peter .O",
+            "email": "me@godwin.dev"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^4.1"
+    }
+}
