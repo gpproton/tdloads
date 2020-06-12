@@ -10,6 +10,19 @@ NOTE: Ensure the mode option is left as transfer.
 
 For any other configuration see the .env file, also note the you should include your files on storage folder  by default.
 
+### Test run it
+
+```
+git clone https://github.com/gpproton/tdloads.git && cd tdloads/
+```
+
+```
+php -S localhost:4567
+```
+### Access the URL
+
+The functionalities should be clear from the query strings keys.
+
 `````
 http://localhost/?mode=transfer&path=test1&path=test2&filename=customers&ext=xlsx
 `````
