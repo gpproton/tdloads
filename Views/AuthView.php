@@ -16,7 +16,7 @@ final class AuthView extends BaseView {
             <span class="dl_header_text" style="font-size: 22px;">Requires a PassKey</span>
         </div>
 
-        <form action="" method="POST" class="dl_form dl_vertical_center dl_horizontal_center">
+        <form action="<?php echo Routes::PageActualUrl(); ?>" method="POST" class="dl_form dl_vertical_center dl_horizontal_center">
             <div class="dl_base_form">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input dl_input" type="password" id="auth" name="dl_passkey" required>
