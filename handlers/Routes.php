@@ -67,6 +67,18 @@ final class Routes {
         header("Location: /" . $queryString);
     }
 
+    public static function PageActualUrl($option = null)
+    {
+        $currentLink = (isset($_SERVER['HTTPS'])
+        && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+        . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+        if(strpos($currentLink, '?') !== false)
+        {
+            $currentLink = substr($currentLink, 0, strpos($currentLink, '?') - strlen($currentLink));
+        }
+    }
+
     private function StartController()
     {
         Utils::viewLoader(self::$RouteMode);

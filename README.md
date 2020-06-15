@@ -13,8 +13,16 @@ For any other configuration see the .env file, also note the you should include 
 ### Test run it
 
 ```
-git clone https://github.com/gpproton/tdloads.git && cd tdloads/
+git clone https://github.com/gpproton/tdloads.git
 ```
+```
+cd tdloads/
+```
+```
+setup.bat
+```
+
+### If running locally access in php local file.
 
 ```
 php -S localhost:4567
@@ -24,7 +32,7 @@ php -S localhost:4567
 The functionalities should be clear from the query strings keys.
 
 `````
-http://localhost/?mode=transfer&path=test1&path=test2&filename=customers&ext=xlsx
+http://localhost:4567/?mode=transfer&path=test1&path=test2&filename=customers&ext=xlsx
 `````
 
 
